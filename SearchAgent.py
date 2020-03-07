@@ -1,27 +1,73 @@
-import random
-import math
-from environment import Agent, Environment
-from simulator import Simulator
 import sys
+from environment import Agent, Environment
 from searchUtils import searchUtils
+from simulator import Simulator
+
+
+def manhattan_distance(prev, cur):
+    return abs(prev[0] - cur[0]) + abs(prev[1] - cur[1])
+
+
+def heuristic_cost_estimate(start, goal):
+    return manhattan_distance(start, goal) / 2
+
+
+def reconstruct_path(came_from, current):
+    total_path = [current]
+    while current in came_from:
+        total_path.append(current)
+        current = came_from[current]
+    total_path.append(current)
+    return total_path
+
+
+def apply_action(current, action):
+    return current[0] + action[0], current[1] + action[1]
+
+
+def a_star(start, goal):
+    actions = [(0, 1), (0, 2), (0, 3), (-1, 0), (1, 0)]
+    closed_set = {start}
+    open_set = {start}
+    came_from = dict()
+    g_score = {start: 0}
+    f_score = {start: heuristic_cost_estimate(start, goal)}
+    current = start
+    while open_set:
+        f_score_heap = [(v, k) for k, v in f_score.items()]
+        _, current = f_score_heap.pop()
+        if current == goal:
+            return True, reconstruct_path(came_from, current)
+        open_set.remove(current)
+        del f_score[current]
+        closed_set.add(current)
+        for action in actions:
+            neighbor = apply_action(current, action)
+            if neighbor == current:
+                continue
+            distance = manhattan_distance(current, neighbor)
+            tentative_g_score = g_score[current] + distance
+            if neighbor not in open_set:
+                open_set.add(neighbor)
+            elif tentative_g_score > g_score[neighbor]:
+                continue
+            came_from[neighbor] = current
+            g_score[neighbor] = tentative_g_score
+            f_score[neighbor] = g_score[neighbor] + heuristic_cost_estimate(neighbor, goal)
+    if current == goal:
+        return True, reconstruct_path(came_from, current)
+    else:
+        return False, reconstruct_path(came_from, current)
 
 
 class SearchAgent(Agent):
-    """ An agent that drives in the Smartcab world.
-        This is the object you will be modifying. """
-
     def __init__(self, env, location=None):
-        # Set the agent in the evironment
         super(SearchAgent, self).__init__(env)
         self.valid_actions = self.env.valid_actions  # The set of valid actions
         self.action_sequence = []
         self.searchutil = searchUtils(env)
 
     def choose_action(self):
-        """ The choose_action function is called when the agent is asked to choose
-            which action to take next"""
-
-        # Set the agent state and default action
         action = None
         if len(self.action_sequence) >= 1:
             action = self.action_sequence[0]
@@ -31,9 +77,11 @@ class SearchAgent(Agent):
             self.action_sequence = []
         return action
 
-    def drive(self, goalstates, inputs):
+    def drive(self, goal_states, grid):
+        start_state = self.state['location']
+        goal_states = [x['location'] for x in goal_states]
         """Write your algorithm for self driving car"""
-        act_sequence = []
+        _, act_sequence = a_star(start_state, goal_states[0])
         return act_sequence
 
     def update(self):
@@ -56,6 +104,10 @@ def run(filename):
     env = Environment(config_file=filename, fixmovement=False)
 
     agent = env.create_agent(SearchAgent)
+
+    def apply_action_from_env(current, action):
+        env.applyAction(agent, current, action)
+
     env.set_primary_agent(agent)
 
     ##############
