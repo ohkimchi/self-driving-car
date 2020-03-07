@@ -1,3 +1,4 @@
+import heapq
 import sys
 from environment import Agent, Environment
 from searchUtils import searchUtils
@@ -18,15 +19,16 @@ def reconstruct_path(came_from, current):
         total_path.append(current)
         current = came_from[current]
     total_path.append(current)
-    return total_path
+    return total_path[::-1][1:]
 
 
-def apply_action(current, action):
-    return current[0] + action[0], current[1] + action[1]
+def get_lowest_f_score(f_score):
+    min_score = min(f_score.values())
+    return [(k, v) for k, v in f_score.items() if v == min_score]
 
 
 def a_star(start, goal):
-    actions = [(0, 1), (0, 2), (0, 3), (-1, 0), (1, 0)]
+    actions = [None, 'forward-3x', 'forward-2x', 'forward', 'left', 'right']
     closed_set = {start}
     open_set = {start}
     came_from = dict()
@@ -34,26 +36,28 @@ def a_star(start, goal):
     f_score = {start: heuristic_cost_estimate(start, goal)}
     current = start
     while open_set:
-        f_score_heap = [(v, k) for k, v in f_score.items()]
-        _, current = f_score_heap.pop()
-        if current == goal:
-            return True, reconstruct_path(came_from, current)
-        open_set.remove(current)
-        del f_score[current]
-        closed_set.add(current)
-        for action in actions:
-            neighbor = apply_action(current, action)
-            if neighbor == current:
-                continue
-            distance = manhattan_distance(current, neighbor)
-            tentative_g_score = g_score[current] + distance
-            if neighbor not in open_set:
-                open_set.add(neighbor)
-            elif tentative_g_score > g_score[neighbor]:
-                continue
-            came_from[neighbor] = current
-            g_score[neighbor] = tentative_g_score
-            f_score[neighbor] = g_score[neighbor] + heuristic_cost_estimate(neighbor, goal)
+        lowest_f_score = get_lowest_f_score(f_score)
+        for current, cost in lowest_f_score:
+            if current == goal:
+                return True, reconstruct_path(came_from, current)
+            open_set.remove(current)
+            del f_score[current]
+            closed_set.add(current)
+            for action in actions:
+                neighbor = the_env.applyAction(agent=the_agent, state={'location': current}, action=action)
+                neighbor = neighbor['location']
+                if neighbor == current:
+                    continue
+                distance = manhattan_distance(start, neighbor)
+                tentative_g_score = g_score[current] + distance
+                if neighbor not in open_set:
+                    open_set.add(neighbor)
+                elif tentative_g_score > g_score[neighbor]:
+                    continue
+                came_from[neighbor] = current
+                g_score[neighbor] = tentative_g_score
+                f_score[neighbor] = g_score[neighbor] + heuristic_cost_estimate(neighbor, goal)
+
     if current == goal:
         return True, reconstruct_path(came_from, current)
     else:
@@ -68,6 +72,7 @@ class SearchAgent(Agent):
         self.searchutil = searchUtils(env)
 
     def choose_action(self):
+        print(self.action_sequence)
         action = None
         if len(self.action_sequence) >= 1:
             action = self.action_sequence[0]
@@ -81,7 +86,8 @@ class SearchAgent(Agent):
         start_state = self.state['location']
         goal_states = [x['location'] for x in goal_states]
         """Write your algorithm for self driving car"""
-        _, act_sequence = a_star(start_state, goal_states[0])
+        ok, act_sequence = a_star(start_state, goal_states[0])
+        print(ok, act_sequence)
         return act_sequence
 
     def update(self):
@@ -104,6 +110,11 @@ def run(filename):
     env = Environment(config_file=filename, fixmovement=False)
 
     agent = env.create_agent(SearchAgent)
+
+    global the_env
+    global the_agent
+    the_env = env
+    the_agent = agent
 
     def apply_action_from_env(current, action):
         env.applyAction(agent, current, action)
