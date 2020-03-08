@@ -98,6 +98,7 @@ class SearchAgent(Agent):
         start_state = self.state
         goal_states = [x for x in goal_states]
         """Write your algorithm for self driving car"""
+        print('start:', start_state, 'goal:', goal_states)
         ok, act_sequence = a_star(start_state, goal_states)
         return act_sequence
 
