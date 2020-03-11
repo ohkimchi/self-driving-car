@@ -3,12 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="28593af8-05a6-46b5-8300-e90f78a05438" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SearchAgent.py" beforeDir="false" afterPath="$PROJECT_DIR$/SearchAgent.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -23,14 +29,14 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="/Applications/iTerm.app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="com.sburlyaev.cmd.plugin.PluginSettings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -55,7 +61,8 @@
       <option name="presentableId" value="Default" />
       <updated>1583552187698</updated>
       <workItem from="1583552192327" duration="141000" />
-      <workItem from="1583552852471" duration="27597000" />
+      <workItem from="1583552852471" duration="27647000" />
+      <workItem from="1583637127878" duration="6694000" />
     </task>
     <servers />
   </component>
@@ -71,9 +78,10 @@
       <screen x="0" y="23" width="1400" height="877" />
     </state>
     <state x="502" y="168" key="FileChooserDialogImpl/0.23.1400.877@0.23.1400.877" timestamp="1583573249754" />
-    <state x="151" y="23" width="1229" height="877" key="SettingsEditor" timestamp="1583573251791">
-      <screen x="0" y="23" width="1400" height="877" />
+    <state x="202" y="23" width="1229" height="877" key="SettingsEditor" timestamp="1583637111950">
+      <screen x="0" y="23" width="1875" height="1057" />
     </state>
+    <state x="202" y="23" key="SettingsEditor/-1920.103.1920.1177/0.23.1875.1057@0.23.1875.1057" timestamp="1583637111950" />
     <state x="202" y="126" key="SettingsEditor/-1920.103.1920.1177/0.23.1876.1057@0.23.1876.1057" timestamp="1583553018037" />
     <state x="204" y="126" key="SettingsEditor/-1920.103.1920.1177/0.23.1895.1057@0.23.1895.1057" timestamp="1583552334374" />
     <state x="151" y="23" key="SettingsEditor/0.23.1400.877@0.23.1400.877" timestamp="1583573251791" />
