@@ -13,7 +13,6 @@ def heuristic_cost_estimate(start, goal):
 
 
 def reconstruct_path(came_from, current):
-
     if current not in came_from:
         total_path = [current]
     else:
