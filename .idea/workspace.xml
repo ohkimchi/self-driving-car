@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="28593af8-05a6-46b5-8300-e90f78a05438" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SearchAgent.py" beforeDir="false" afterPath="$PROJECT_DIR$/SearchAgent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SelfDrivingCar.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/SelfDrivingCar.pdf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +21,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JupyterTrust" id="fa931596-ce2d-45ce-aacc-86a86ee64968" />
   <component name="ProjectId" id="1YmeRM2Ys9kGV4oMQcVa2sv89v5" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -63,6 +66,10 @@
       <workItem from="1583552192327" duration="141000" />
       <workItem from="1583552852471" duration="27647000" />
       <workItem from="1583637127878" duration="6694000" />
+      <workItem from="1583976593956" duration="117000" />
+      <workItem from="1584001162051" duration="70000" />
+      <workItem from="1584018432348" duration="40000" />
+      <workItem from="1584021878720" duration="697000" />
     </task>
     <servers />
   </component>

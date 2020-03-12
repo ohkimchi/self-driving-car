@@ -9,7 +9,8 @@ def manhattan_distance(prev, cur):
 
 
 def heuristic_cost_estimate(start, goal):
-    return manhattan_distance(start, goal) / 2
+    # To make it faster so I times 8, just a random bigger number
+    return manhattan_distance(start, goal) * 8
 
 
 def reconstruct_path(came_from, current):
