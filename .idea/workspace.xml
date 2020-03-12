@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="28593af8-05a6-46b5-8300-e90f78a05438" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SearchAgent.py" beforeDir="false" afterPath="$PROJECT_DIR$/SearchAgent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SelfDrivingCar.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/SelfDrivingCar.pdf" afterDir="false" />
-    </list>
+    <list default="true" id="28593af8-05a6-46b5-8300-e90f78a05438" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +65,7 @@
       <workItem from="1583976593956" duration="117000" />
       <workItem from="1584001162051" duration="70000" />
       <workItem from="1584018432348" duration="40000" />
-      <workItem from="1584021878720" duration="697000" />
+      <workItem from="1584021878720" duration="1132000" />
     </task>
     <servers />
   </component>
